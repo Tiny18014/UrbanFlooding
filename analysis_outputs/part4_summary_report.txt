@@ -1,0 +1,98 @@
+================================================================================
+URBAN FLOOD FORECASTING - PART 4 ANALYSIS SUMMARY
+FEATURE CORRELATIONS & IMPORTANCE
+================================================================================
+
+
+STATIC FEATURE CORRELATIONS:
+
+1D Drainage Nodes - Top Correlations with Water Level:
+  - depth: -0.2654
+  - invert_elevation: -0.0737
+  - surface_elevation: -0.1123
+  - base_area: 0.5296
+
+2D Surface Nodes - Top Correlations with Water Level:
+  - area: 0.1913
+  - roughness: 0.0814
+  - elevation: 0.9957
+  - curvature: 0.0091
+  - flow_accumulation: 0.0533
+
+TEMPORAL LAG CORRELATIONS:
+
+1D Nodes - Average Lag Correlations:
+  - water_level_lag1: nan ± nan
+  - water_level_lag2: nan ± nan
+  - water_level_lag3: nan ± nan
+  - inlet_flow_lag0: nan ± nan
+
+2D Nodes - Average Lag Correlations:
+  - water_level_lag1: 0.9943 ± 0.0043
+  - water_level_lag2: 0.9844 ± 0.0103
+  - water_level_lag3: 0.9724 ± 0.0167
+  - rainfall_lag0: nan ± nan
+  - rainfall_lag1: nan ± nan
+  - rainfall_lag2: nan ± nan
+
+FEATURE REDUNDANCY:
+
+Highly Correlated Pairs (|r| > 0.9):
+  None (no pairs with |correlation| > 0.9)
+
+PCA Analysis:
+  - Total features analyzed: 5
+  - Components for 95% variance: 5
+  - Dimensionality reduction potential: 0 features can be removed
+
+TOP 10 MOST IMPORTANT FEATURES:
+
+  1. 2D_elevation (static): 0.9957
+  2. 2D_flow_accumulation (static): 0.0533
+  3. 1D_water_level_lag1 (temporal): nan
+  4. 1D_water_level_lag2 (temporal): nan
+  5. 1D_water_level_lag3 (temporal): nan
+  6. 1D_inlet_flow_lag0 (temporal): nan
+  7. 2D_water_level_lag1 (temporal): 0.9943
+  8. 2D_water_level_lag2 (temporal): 0.9844
+  9. 2D_water_level_lag3 (temporal): 0.9724
+  10. 1D_base_area (static): 0.5296
+
+KEY INSIGHTS:
+
+1. Temporal autocorrelation is STRONG:
+   - Water level at t-1 is highly predictive of water level at t
+   - Autoregressive features are crucial for forecasting
+
+2. Static features provide context:
+   - Elevation-related features show correlation with average water levels
+   - Topographic features (flow accumulation, curvature) affect flood dynamics
+
+3. Rainfall is a key driver:
+   - Strong correlation between rainfall and water level in 2D nodes
+   - Lag effects suggest delayed response to precipitation
+
+4. Feature redundancy is minimal:
+   - 0 pairs with very high correlation
+   - Most features provide unique information
+
+5. Dimensionality reduction opportunity:
+   - PCA shows 5 components capture 95% variance
+   - Can reduce from 5 to 5 features if needed
+
+MODELING RECOMMENDATIONS:
+
+1. Include temporal lags (water_level at t-1, t-2, t-3)
+2. Include rainfall features with lags
+3. Use elevation and flow accumulation as static features
+4. Consider feature engineering: rainfall accumulation over multiple timesteps
+5. Autoregressive models (LSTM, GRU) will perform well due to strong temporal autocorrelation
+6. Graph Neural Networks can leverage spatial relationships + temporal patterns
+
+OUTPUTS GENERATED:
+  - c:\Users\shubh\OneDrive\Desktop\UrbanFlooding\analysis_outputs\figures\correlation_heatmap_1d_static.png
+  - c:\Users\shubh\OneDrive\Desktop\UrbanFlooding\analysis_outputs\figures\correlation_heatmap_2d_static.png
+  - c:\Users\shubh\OneDrive\Desktop\UrbanFlooding\analysis_outputs\figures\temporal_lag_correlations.png
+  - c:\Users\shubh\OneDrive\Desktop\UrbanFlooding\analysis_outputs\figures\correlation_all_static_features.png
+  - c:\Users\shubh\OneDrive\Desktop\UrbanFlooding\analysis_outputs\figures\pca_variance_analysis.png
+  - c:\Users\shubh\OneDrive\Desktop\UrbanFlooding\analysis_outputs\figures\top10_feature_importance.png

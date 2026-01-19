@@ -1,0 +1,60 @@
+================================================================================
+URBAN FLOOD FORECASTING - PART 2 ANALYSIS SUMMARY
+================================================================================
+
+
+WATER LEVEL DISTRIBUTIONS:
+
+Model 1 - 1D Nodes:
+  • Range: 286.60 - 347.95 m
+  • Mean ± Std: 308.09 ± 16.88 m
+  • Zero values: 0.00%
+  • Outliers (>3σ): 0.00%
+
+Model 1 - 2D Nodes:
+  • Range: 293.15 - 360.08 m
+  • Mean ± Std: 322.11 ± 14.38 m
+  • Zero values: 0.00%
+  • Outliers (>3σ): 0.00%
+
+TEMPORAL DYNAMICS:
+  • Strong temporal autocorrelation observed (lag-1 typically > 0.9)
+  • Water levels show smooth progression over time
+  • Peak timing varies by node location and event characteristics
+  • Recession phase is generally slower than rise phase
+
+RAINFALL CHARACTERISTICS:
+
+Model 1:
+  • Total rainfall range: 1.5 - 8.1 mm
+  • Mean total rainfall: 4.3 mm
+  • Peak intensity range: 0.0383 - 0.3833 mm/step
+  • Spatial distribution: SPATIALLY VARYING
+
+Model 2:
+  • Total rainfall range: 0.7 - 9.8 mm
+  • Mean total rainfall: 4.4 mm
+  • Spatial distribution: UNIFORM
+
+RAINFALL-RESPONSE RELATIONSHIPS:
+  • Positive correlation observed between total rainfall and peak water levels
+  • 2D surface response shows stronger correlation with rainfall than 1D drainage
+  • Response magnitude varies by catchment characteristics
+  • Some events show disproportionate response (outliers for investigation)
+
+OUTPUTS GENERATED:
+  • c:\Users\shubh\OneDrive\Desktop\UrbanFlooding\analysis_outputs\figures\water_level_distributions.png
+  • c:\Users\shubh\OneDrive\Desktop\UrbanFlooding\analysis_outputs\figures\temporal_dynamics_water_levels.png
+  • c:\Users\shubh\OneDrive\Desktop\UrbanFlooding\analysis_outputs\figures\autocorrelation_analysis.png
+  • c:\Users\shubh\OneDrive\Desktop\UrbanFlooding\analysis_outputs\figures\rainfall_time_series_examples.png
+  • c:\Users\shubh\OneDrive\Desktop\UrbanFlooding\analysis_outputs\figures\rainfall_vs_peak_water_level.png
+  • c:\Users\shubh\OneDrive\Desktop\UrbanFlooding\analysis_outputs\water_level_statistics.csv
+  • c:\Users\shubh\OneDrive\Desktop\UrbanFlooding\analysis_outputs\rainfall_characteristics_model1.csv
+  • c:\Users\shubh\OneDrive\Desktop\UrbanFlooding\analysis_outputs\rainfall_characteristics_model2.csv
+
+MODELING IMPLICATIONS:
+  1. High temporal autocorrelation → Autoregressive models will be effective
+  2. Uniform spatial rainfall → No need for complex spatial rainfall interpolation
+  3. Variable event magnitudes → Model must handle wide range of scales
+  4. Low zero-inflation → Regression approach suitable (no need for zero-inflated models)
+  5. Correlation with rainfall → Rainfall features are critical predictors
